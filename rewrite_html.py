@@ -9,10 +9,10 @@ SIDEBAR_TARGET = '<!-- sidebar -->'
 
 dates = []
 date_map = {}
-for fn in sorted(os.listdir('./html/orig')):
+for fn in sorted(os.listdir('./docs/orig')):
     if fn.split('.')[-1] != 'html':
         continue
-    with open(os.path.join('./html/orig', fn)) as f:
+    with open(os.path.join('./docs/orig', fn)) as f:
         html = f.read()
         m = re_date.search(html)
         if m:
@@ -27,14 +27,14 @@ for fn in sorted(os.listdir('./html/orig')):
 
 ul = '\n<ul class="nav">' + '\n'.join(['<li><a href="{}">{}</a></li>'.format(x[1], x[0]) for x in dates]) + '</ul>'
 
-for fn in sorted(os.listdir('./html/orig')):
+for fn in sorted(os.listdir('./docs/orig')):
     if fn.split('.')[-1] != 'html':
         continue
-    with open(os.path.join('./html/orig', fn)) as f:
+    with open(os.path.join('./docs/orig', fn)) as f:
         html = f.read()
 
-        new_html = HEADER + re_img_src.sub(' src="img/\\1.jpg"', html) + FOOTER
+        new_html = HEADER + re_img_src.sub(' src="http://sbma44.s3-website-us-east-1.amazonaws.com/mom-journo/\\1.jpg"', html) + FOOTER
         new_html = new_html.replace(SIDEBAR_TARGET, ul)
 
-        with open(os.path.join('./html', date_map[fn]), 'w') as f2:
+        with open(os.path.join('./docs', date_map[fn]), 'w') as f2:
             f2.write(new_html)
