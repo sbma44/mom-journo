@@ -1,0 +1,30 @@
+* { font-family: Gotham; }
+.entry-content div { padding-bottom: 0 !important;}
+.Apple-converted-space { display: none; }
+form { display: none; }
+.entry-header {
+    font-size: 2em;
+    font-weight: bold;
+}
+.entry-header .entry-index { display: none; }
+.entry-date { font-size: 1.2em; }
+.entry-footer { display: none; }
+p { font-size: 18px !important; }
+img { margin: 1em 0; }
+
+.with-sidebar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s1);
+}
+
+.with-sidebar > :first-child {
+    flex-basis: 10em;
+    flex-grow: 1;
+}
+
+.with-sidebar > :last-child {
+    flex-basis: 0;
+    flex-grow: 999;
+    min-inline-size: 50%;
+}
